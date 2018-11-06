@@ -1,0 +1,3 @@
+/home/howard/Documents/FractalGenerator/CMakeFiles/rebuild_cache.dir
+/home/howard/Documents/FractalGenerator/CMakeFiles/FractalGenerator.dir
+/home/howard/Documents/FractalGenerator/CMakeFiles/edit_cache.dir
