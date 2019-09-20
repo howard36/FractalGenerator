@@ -10,8 +10,8 @@ screen = turtle.Screen()
 current = [0.0, 0.0, 0.0, 0.0, 0.0]
 
 t.penup()
-t.hideturtle()
-screen.bgcolor("black")
+# t.hideturtle()
+# screen.bgcolor("black")
 
 s = 500.0
 yshift = -100
@@ -28,8 +28,8 @@ while (True):
         current[j] = (current[j] + points[i][j])/2
     t.setpos(current[0], current[1])
     t.pencolor((current[2], current[3], current[4]))
-    if moves > 1000:
-        t.dot(1)
+    # if moves > 1000:
+    t.dot(5)
     if moves % 100 == 0:
         print(moves)
 

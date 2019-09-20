@@ -6,14 +6,21 @@
 using namespace cv;
 using namespace std;
 
-double q = 63.75;
+double q = 63.999;
 
-double points[6][5] = {{0.0, 1.0, q, 4 * q, q},
-					   {-sqrt(3) / 2, 0.5, 3 * q, 3 * q, 0},
-					   {-sqrt(3) / 2, -0.5, 4 * q, q, q},
-					   {0.0, -1.0, 3 * q, 0, 3 * q},
-					   {sqrt(3) / 2, -0.5, q, q, 4 * q},
-					   {sqrt(3) / 2, 0.5, 0, 3 * q, 3 * q}};
+// double points[6][5] = {{0.0, 1.0, q, 4 * q, q},
+// 					   {-sqrt(3) / 2, 0.5, 3 * q, 3 * q, 0},
+// 					   {-sqrt(3) / 2, -0.5, 4 * q, q, q},
+// 					   {0.0, -1.0, 3 * q, 0, 3 * q},
+// 					   {sqrt(3) / 2, -0.5, q, q, 4 * q},
+// 					   {sqrt(3) / 2, 0.5, 0, 3 * q, 3 * q}};
+
+double points[6][5] = {{0.0, 1.0, 2 * q, 4 * q, 0},
+					   {-sqrt(3) / 2, 0.5, 4 * q, 2 * q, 0},
+					   {-sqrt(3) / 2, -0.5, 4 * q, 0, 2 * q},
+					   {0.0, -1.0, 2 * q, 0, 4 * q},
+					   {sqrt(3) / 2, -0.5, 0, 2 * q, 4 * q},
+					   {sqrt(3) / 2, 0.5, 0, 4 * q, 2 * q}};
 
 int main(int argc, char **argv) {
 	srand(time(NULL));
@@ -27,9 +34,9 @@ int main(int argc, char **argv) {
 
 	for (int i = 0; i < 100000000; i++) {
 		int p = rand() % 6;
-		x = (x + 2 * points[p][0]) / 3, y = (y + 2 * points[p][1]) / 3;
+		x = (x - 2 * points[p][1]) / 3, y = (y + 2 * points[p][0]) / 3;
 		for (int j = 0; j < 3; j++) {
-			cur[j] = (cur[j] + 2 * points[p][j + 2]) / 3;
+			cur[j] = (cur[j] + 2 * points[(p+3)%6][j + 2]) / 3;
 		}
 		int realx = (int)(x * s) + w / 2, realy = h / 2 - (int)(y * s) + yshift;
 		if (i > 100000) {
@@ -44,6 +51,6 @@ int main(int argc, char **argv) {
 	namedWindow("Display window", WINDOW_NORMAL);
 	imshow("Display window", img);
 	waitKey(0);
-	imwrite("Images/Test2.png", img);
+	imwrite("Images/HexagonTopGBBRRG.png", img);
 	return 0;
 }
